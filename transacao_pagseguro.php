@@ -21,7 +21,7 @@ $email = $linhas['email'];
 $situacao = 1;
 
 
-$sql_insert = "INSERT INTO transacoes_pagseguro (id_reserva, situacao ) values (:id_reserva, :situacao)";
+$sql_insert = "INSERT INTO transacoes_pagseguro (id_reserva, id_situacao ) values (:id_reserva, :situacao)";
 $resultado = $pdo->prepare($sql_insert);
 
 $dados = array(':id_reserva' => $idreserva,
@@ -49,17 +49,6 @@ echo "<script>alert('Você será redirecionado para o Pagseguro!')
 			$cpf
 		);  
 
-
-/*
-		$paymentRequest->setSender(		  
-			'Joao comprador',  
-			'c33627255865565607371@sandbox.pagseguro.com.br',  
-			'11',  
-			'56273440',  
-			'156.009.442-76'
-		);  
-
-*/
 		$paymentRequest->setCurrency("BRL");
 		try {  
 

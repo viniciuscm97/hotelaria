@@ -37,6 +37,17 @@ $dados = array(':data_entrada' => $entrada,
 ':num_diarias' => $numerodiarias);
 
 $resultado->execute($dados);
+
+$disponivel = '0';
+
+$sql_update = "UPDATE `quartos` SET `disponivel` = :disponivel WHERE id_quartos = :id_quarto;";
+$resultado_update = $pdo->prepare($sql_update);
+
+$dados_update = array(':disponivel' => $disponivel,
+':id_quarto' => $idquartos);
+
+$resultado_update->execute($dados_update);
+
 echo "<script>alert('Reserva cadastrada com sucesso!');
             top.location.href='index.php';
             </script>";  

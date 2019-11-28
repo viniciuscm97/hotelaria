@@ -24,6 +24,7 @@ $query_quartos_esc->execute();
 $resultado_quartos_esc = $query_quartos_esc->fetchAll();
 
 
+
 ?>
   <div class="row">
     <div class="col-md-4 order-md-2 mb-4">
@@ -60,9 +61,11 @@ $resultado_quartos_esc = $query_quartos_esc->fetchAll();
                 <option value="">Escolha...</option>
 
                 <?php foreach ($resultado_usuarios as $resultado_usuarios){
-                    ?>
+                              if($resultado_usuarios['situacao'] == 1):
+                                ?>
+                    
                     <option value="<?php echo $resultado_usuarios['id_usuario'] ?>"> <?php echo $resultado_usuarios['Nome'] ?></option>
-                <?php  } ?>
+                <?php  endif; } ?>
             </select>
         </div>
 
