@@ -8,11 +8,12 @@ header("access-control-allow-origin: https://sandbox.pagseguro.uol.com.br");
 $code = $_POST['notificationCode'];
 $type = $_POST['notificationType'];
 if($type == 'transaction'){
-$url = "https://ws.sandbox.pagseguro.uol.com.br/v2/transactions/notifications/".$code."?email=&token=";
+$url = "https://ws.sandbox.pagseguro.uol.com.br/v2/transactions/notifications/".$code."?email=viniciuscmoreira97@outlook.com&token=D53C59C430E74A3184CBBAAC837D26A2";
 $content = file_get_contents($url);
 $xml = simplexml_load_string($content);
 
   var_dump($xml);
+}
 
 require('database_functions.php');
 

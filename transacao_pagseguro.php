@@ -18,14 +18,29 @@ $nome = $linhas['Nome'];
 $cpf = $linhas['cpf'];
 $email = $linhas['email'];
 
+$situacao = 1;
 
+
+$sql_insert = "INSERT INTO transacoes_pagseguro (id_reserva, situacao ) values (:id_reserva, :situacao)";
+$resultado = $pdo->prepare($sql_insert);
+
+$dados = array(':id_reserva' => $idreserva,
+':situacao' => $situacao);
+$resultado->execute($dados);
+
+$sql_transacao= "SELECT max(id_transacao_pagseguro) as id from transacoes_pagseguro";
+
+$resultado_transacao = $pdo->query($sql_transacao);
+$linhas_transacao = $resultado_transacao->fetch();	
+
+$idpag = $linhas_transacao['id'];
 
 echo "<script>alert('Você será redirecionado para o Pagseguro!')
             </script>";  
         
         require 'PagSeguroLibrary/PagSeguroLibrary.php';
 		$paymentRequest = new PagSeguroPaymentRequest();  
-		$paymentRequest->addItem($idreserva, 'Reserva de quarto em hotel dos guri', '1', '799'); 
+		$paymentRequest->addItem($idpag, 'Reserva de quarto em hotel', '1', $total_reserva); 
 		$paymentRequest->setSender(		  
 			$nome,  
 			'c53075719240619249476@sandbox.pagseguro.com.br',  
