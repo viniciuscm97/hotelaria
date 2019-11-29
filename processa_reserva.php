@@ -8,7 +8,7 @@ $idcliente = $_POST['cliente'];
 $idquartos = $_POST['quarto'];
 $saida = $_POST['dataSaida'];
 $entrada = $_POST['dataEntrada'];
-$situacao = "ativo";
+$situacao = "A";
 
 $sql = "SELECT DATEDIFF('$saida', '$entrada') as numdiarias";
 $resultado = $pdo->query($sql);

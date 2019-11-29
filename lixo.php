@@ -58,3 +58,15 @@ $ValorPhp = $_POST["resultado"];
           </body>
       </html>
       
+
+
+      /////////////////
+
+
+      $sql_insert = "UPDATE `transacoes_pagseguro` SET `id_situacao` = :id_situacao WHERE `transacoes_pagseguro`.`id_transacao_pagseguro` = :id_pagseguro;";
+$resultado = $pdo->prepare($sql_insert);
+
+$dados = array(':id_situacao' => $status,
+':id_pagseguro' => $reference);
+
+$resultado->execute($dados);

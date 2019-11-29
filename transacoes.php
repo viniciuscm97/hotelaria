@@ -9,27 +9,26 @@ require('database_functions.php');
 $pdo = connect_to_database("hotel");
 
 
-$sql_reserva = "SELECT q.valor as valor_quarto,q.numero as numero_quarto,q.tipo as tipo_quarto,r.* from quartos q join reserva r on r.id_quartos=q.id_quartos where id_usuario = '$idusuario';";
+$sql_transacao = "SELECT t.*,r.* from reserva r inner join transacoes_pagseguro t on r.id_reserva=t.id_reserva;";
+$resultado_transacao = $pdo->query($sql_transacao );
+//$linhas_transacao = $resultado_transacao->fetch();
 
-$resultado_reserva = $pdo->query($sql_reserva);
+//$resultado_reserva_total = $pdo->query($sql_reserva);
 
-$resultado_reserva_total = $pdo->query($sql_reserva);
-$linhas = $resultado_reserva_total->fetch();
 
 ?>
 
 <div class="reserva">
-  <h4>Dados da reserva</h4>
+  <h4>Dados das transações</h4>
 
 <table class="table table-hover">
 <thead>
   <tr>
     <th scope="col">ID</th>
-    <th scope="col">Data entrada</th>
-    <th scope="col">Data saída</th>
-    <th scope="col">Número de diárias</th>
-    <th scope="col">Número do quarto</th>
-    <th scope="col">Tipo do quarto</th>            
+    <th scope="col">Código da transação</th>
+    <th scope="col">Data da transação</th>
+    <th scope="col">Situação</th>
+    <th scope="col">Valor total</th>           
   </tr>
 </thead>
 <tbody>
@@ -37,14 +36,14 @@ $linhas = $resultado_reserva_total->fetch();
 
 <?php
 
-while ($row = $resultado_reserva->fetch()) {
+while ($row = $resultado_transacao->fetch()) {
 echo "\n<tr>".
-"<td>".$row['id_reserva']."</td>".
-"<td>".$row['data_entrada']."</td>".
-"<td>".$row['data_saida']."</td>".
-"<td>".$row['num_diarias']."</td>".
-"<td>".($row['numero_quarto'])."</td>".
-"<td>".($row['tipo_quarto'])."</td>".
+"<td>".$row['id_transacao_pagseguro']."</td>".
+"<td>".$row['cod_transacao_pagseguro']."</td>".
+"<td>".$row['data_trans']."</td>".
+
+"<td>".($row['id_situacao'])."</td>".
+"<td>".($row['total'])."</td>".
 "</tr>";
 
 }
