@@ -11,9 +11,7 @@ $pdo = connect_to_database("hotel");
 
 $sql_transacao = "SELECT t.*,r.* from reserva r inner join transacoes_pagseguro t on r.id_reserva=t.id_reserva;";
 $resultado_transacao = $pdo->query($sql_transacao );
-//$linhas_transacao = $resultado_transacao->fetch();
 
-//$resultado_reserva_total = $pdo->query($sql_reserva);
 
 
 ?>
@@ -41,8 +39,17 @@ echo "\n<tr>".
 "<td>".$row['id_transacao_pagseguro']."</td>".
 "<td>".$row['cod_transacao_pagseguro']."</td>".
 "<td>".$row['data_trans']."</td>".
-
-"<td>".($row['id_situacao'])."</td>".
+"<td>";
+  if($row['id_situacao']==1){
+      echo 'AGUARDANDO PAGAMENTO';
+  }else if($row['id_situacao']==3){
+      echo 'PAGAMENTO CONCLUIDO';
+  }else if($row['id_situacao']==7){
+    echo 'CANCELADA';
+  }else{
+    echo 'EM ANDAMENTO';
+  }
+echo "</td>".
 "<td>".($row['total'])."</td>".
 "</tr>";
 

@@ -40,7 +40,9 @@
             height:100%;
         }
         
-
+        .transacoes{
+            
+        }
         .container-inner{
             display:table-cell;
             vertical-align:middle;

@@ -9,11 +9,12 @@ include('estatico/header.php');
 
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="my-0 font-weight-normal">Importação</h4>
+                            <h4 class="my-0 font-weight-normal">Clientes</h4>
                         </div>
                         <div class="card-body">
                               <p class="card-text">Menu para realizar a importação de cliente por arquivo .csv</p>
-                              <a href="importacao.php" class="btn btn-primary">Acessar</a>
+                              <a href="importacao.php" class="btn btn-primary">Importar</a>
+                              <a href="ver_clientes.php" class="btn btn-outline-primary">Visualizar</a>
                        </div>
                     </div>
 
@@ -23,7 +24,8 @@ include('estatico/header.php');
                             </div>
                             <div class="card-body">
                                   <p class="card-text">Menu para realizar a reserva do cliente.</p>
-                                  <a href="reserva.php" class="btn btn-primary">Acessar</a>
+                                  <a href="reserva.php" class="btn btn-primary">Cadastrar</a>
+                                  <a href="ver_reservas.php" class="btn btn-outline-primary">Visualizar</a>
                             </div>
                     </div>
                 
@@ -37,8 +39,10 @@ include('estatico/header.php');
                             </div>
                     </div>
             </div>
+            <br>
 
-            <div class="text-center">
+            <div class="card-deck text-center">
+                
                     <div class="card">
                             <div class="card-header">
                                 <h4 class="my-0 font-weight-normal">Transações</h4>
@@ -48,7 +52,7 @@ include('estatico/header.php');
                                   <a href="transacoes.php" class="btn btn-primary">Acessar</a>
                             </div>
                     </div>
-
+                
             </div>
         
 <?php 

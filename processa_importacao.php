@@ -50,7 +50,7 @@ if (isset($_POST["import"])) {
             
             if (! empty($resultado)) {          
                 echo "<script>alert('Importação realizada com sucesso!');
-                top.location.href='index.php';
+                top.location.href='ver_clientes.php';
                 </script>";  
             } else {
                 echo "<script>alert('Erro na importação!');
