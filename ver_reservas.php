@@ -30,7 +30,8 @@ $resultado_reserva = $pdo->query($sql_reserva);
     <th scope="col">Número de diárias</th>
     <th scope="col">Número do quarto</th>
     <th scope="col">Tipo do quarto</th>
-    <th scope="col">Total</th>             
+    <th scope="col">Total</th>
+
   </tr>
 </thead>
 <tbody>
